@@ -1536,11 +1536,24 @@ img {
   /* Clips the zooming image so it stays inside the existing frame */
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  /* Same frame shape for every gallery photo, regardless of source image
+     proportions, so the grid stays consistent while scrolling. */
+  aspect-ratio: 4 / 3;
+}
+
+/* Fallback frame height for browsers without aspect-ratio support */
+@supports not (aspect-ratio: 4 / 3) {
+  .gallery-item {
+    height: 250px;
+  }
 }
 
 .gallery-item img {
-  height: 250px;
+  /* Fill the frame without stretching or distorting the photo */
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.35s ease;
 }
 
