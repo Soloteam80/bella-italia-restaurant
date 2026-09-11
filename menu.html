@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bella Italia - Menu</title>
+    <meta
+      name="description"
+      content="Explore the Bella Italia menu featuring antipasti, pasta and risotto, pizza, secondi, contorni, dolci and drinks, all prepared with authentic Italian flavours."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav-container">
+        <div class="logo">
+          <span class="logo-mark" aria-hidden="true">
+            <svg
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+              focusable="false"
+            >
+              <circle cx="24" cy="24" r="23" fill="#d32f2f" />
+              <circle
+                cx="24"
+                cy="24"
+                r="18.5"
+                fill="none"
+                stroke="#c8a45c"
+                stroke-width="1.4"
+              />
+              <text
+                x="24"
+                y="31.5"
+                text-anchor="middle"
+                font-family="'Playfair Display', Georgia, serif"
+                font-size="19"
+                font-weight="700"
+                fill="#f7f0e6"
+              >
+                BI
+              </text>
+            </svg>
+          </span>
+          <h1>Bella Italia</h1>
+        </div>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" class="active">Menu</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <!-- DEMO PLACEHOLDER: Bella Italia's phone number is fictional.
+                 Replace the placeholder number in the href below with the client's real
+                 WhatsApp number in international format (digits only, no "+" or spaces). -->
+          <a
+            class="whatsapp-btn"
+            href="https://wa.me/35315550123"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat with Bella Italia on WhatsApp (demo placeholder link)"
+          >
+            <span class="whatsapp-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                />
+              </svg>
+            </span>
+            <span class="whatsapp-text">WhatsApp Us</span>
+          </a>
+          <div class="mobile-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero hero-menu">
+        <div class="hero-content">
+          <h2 class="hero-title">Our Menu</h2>
+          <p class="hero-subtitle">
+            A modern Italian restaurant bringing the warmth, flavours and
+            traditions of Italy to the table. From handmade pasta and authentic
+            pizza to delicious desserts, every dish is prepared to make you feel
+            at home.
+          </p>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h3>Antipasti</h3>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Burrata Pugliese</h4>
+              <p>
+                Creamy burrata, roasted cherry tomatoes, basil and extra virgin
+                olive oil
+              </p>
+            </div>
+            <div class="menu-item-price">€14</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Carpaccio di Manzo</h4>
+              <p>
+                Thinly sliced beef, rocket, Parmigiano Reggiano and lemon
+                dressing
+              </p>
+            </div>
+            <div class="menu-item-price">€16</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Fritto Misto Italiano</h4>
+              <p>
+                Crispy selection of zucchini, arancini and seasonal vegetables
+              </p>
+            </div>
+            <div class="menu-item-price">€12</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Polpo alla Griglia</h4>
+              <p>Grilled octopus, crushed potatoes, parsley and lemon</p>
+            </div>
+            <div class="menu-item-price">€17</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Tagliere Italiano</h4>
+              <p>
+                Selection of Italian cured meats, cheeses, olives and homemade
+                focaccia
+              </p>
+            </div>
+            <div class="menu-item-price">€19</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Parmigiana di Melanzane</h4>
+              <p>
+                Baked aubergine, tomato sauce, mozzarella and Parmigiano
+                Reggiano
+              </p>
+            </div>
+            <div class="menu-item-price">€13</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h3>Pasta & Risotto</h3>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Spaghetti alla Carbonara</h4>
+              <p>Spaghetti, crispy guanciale, pecorino Romano and egg yolk</p>
+            </div>
+            <div class="menu-item-price">€15</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Tagliatelle al Ragù</h4>
+              <p>Fresh egg pasta with slow-cooked beef and pork ragù</p>
+            </div>
+            <div class="menu-item-price">€16</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Ravioli Ricotta & Spinaci</h4>
+              <p>
+                Hand-finished ravioli filled with ricotta and spinach, sage
+                butter and Parmigiano
+              </p>
+            </div>
+            <div class="menu-item-price">€17</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Linguine alle Vongole</h4>
+              <p>
+                Linguine with clams, garlic, parsley, white wine and extra
+                virgin olive oil
+              </p>
+            </div>
+            <div class="menu-item-price">€18</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Penne all'Arrabbiata</h4>
+              <p>Penne with tomato, garlic, chilli and fresh parsley</p>
+            </div>
+            <div class="menu-item-price">€12</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Risotto ai Funghi</h4>
+              <p>Carnaroli rice, seasonal mushrooms, Parmigiano and parsley</p>
+            </div>
+            <div class="menu-item-price">€17</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Lasagna della Casa</h4>
+              <p>
+                Layers of fresh pasta, slow-cooked ragù, béchamel and Parmigiano
+              </p>
+            </div>
+            <div class="menu-item-price">€16</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h3>Pizza</h3>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Margherita</h4>
+              <p>Tomato, fior di latte, basil and extra virgin olive oil</p>
+            </div>
+            <div class="menu-item-price">€10</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Diavola</h4>
+              <p>Tomato, mozzarella, spicy salami and fresh basil</p>
+            </div>
+            <div class="menu-item-price">€12</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Quattro Formaggi</h4>
+              <p>Mozzarella, gorgonzola, Parmigiano and taleggio</p>
+            </div>
+            <div class="menu-item-price">€13</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Prosciutto & Funghi</h4>
+              <p>Tomato, mozzarella, Italian ham and mushrooms</p>
+            </div>
+            <div class="menu-item-price">€12</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Burrata</h4>
+              <p>Tomato, mozzarella, burrata, cherry tomatoes and basil</p>
+            </div>
+            <div class="menu-item-price">€14</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Parma</h4>
+              <p>
+                Tomato, mozzarella, Prosciutto di Parma, rocket and Parmigiano
+              </p>
+            </div>
+            <div class="menu-item-price">€15</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Vegetariana</h4>
+              <p>
+                Tomato, mozzarella, grilled courgettes, aubergine, peppers and
+                mushrooms
+              </p>
+            </div>
+            <div class="menu-item-price">€13</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Piccante</h4>
+              <p>Tomato, mozzarella, spicy salami, chilli and red onion</p>
+            </div>
+            <div class="menu-item-price">€13</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h3>Secondi</h3>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Pollo alla Milanese</h4>
+              <p>Crispy breaded chicken breast served with rocket and lemon</p>
+            </div>
+            <div class="menu-item-price">€18</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Tagliata di Manzo</h4>
+              <p>
+                Sliced grilled beef with rocket, cherry tomatoes and Parmigiano
+              </p>
+            </div>
+            <div class="menu-item-price">€24</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Saltimbocca alla Romana</h4>
+              <p>
+                Veal, prosciutto and sage served with a light white-wine sauce
+              </p>
+            </div>
+            <div class="menu-item-price">€21</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Branzino alla Griglia</h4>
+              <p>
+                Grilled sea bass fillet with lemon, herbs and seasonal
+                vegetables
+              </p>
+            </div>
+            <div class="menu-item-price">€22</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Melanzane Ripiene</h4>
+              <p>
+                Oven-baked aubergine stuffed with tomato, mozzarella and herbs
+              </p>
+            </div>
+            <div class="menu-item-price">€17</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h3>Contorni</h3>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Patate al Rosmarino</h4>
+              <p>Roasted potatoes with rosemary and sea salt</p>
+            </div>
+            <div class="menu-item-price">€6</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Verdure Grigliate</h4>
+              <p>Seasonal grilled vegetables with extra virgin olive oil</p>
+            </div>
+            <div class="menu-item-price">€7</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Insalata Mista</h4>
+              <p>Fresh mixed leaves, tomatoes, cucumber and house dressing</p>
+            </div>
+            <div class="menu-item-price">€6</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Patate Fritte</h4>
+              <p>Crispy fries with sea salt</p>
+            </div>
+            <div class="menu-item-price">€5</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h3>Dolci</h3>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Tiramisù della Casa</h4>
+              <p>
+                Classic Italian tiramisù with mascarpone, espresso and cocoa
+              </p>
+            </div>
+            <div class="menu-item-price">€8</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Panna Cotta</h4>
+              <p>Vanilla panna cotta with seasonal berry sauce</p>
+            </div>
+            <div class="menu-item-price">€7</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Cannoli Siciliani</h4>
+              <p>
+                Crispy pastry filled with sweet ricotta, pistachio and chocolate
+              </p>
+            </div>
+            <div class="menu-item-price">€8</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Torta al Cioccolato</h4>
+              <p>Warm chocolate cake served with vanilla ice cream</p>
+            </div>
+            <div class="menu-item-price">€8</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Affogato al Caffè</h4>
+              <p>Vanilla gelato with a shot of Italian espresso</p>
+            </div>
+            <div class="menu-item-price">€6</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Gelato</h4>
+              <p>Selection of Italian gelato</p>
+            </div>
+            <div class="menu-item-price">€6</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h3>Drinks</h3>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Prosecco DOC</h4>
+            </div>
+            <div class="menu-item-price">€7 glass / €28 bottle</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Pinot Grigio</h4>
+            </div>
+            <div class="menu-item-price">€7 glass / €27 bottle</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Montepulciano d'Abruzzo</h4>
+            </div>
+            <div class="menu-item-price">€7 glass / €28 bottle</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Chianti Classico</h4>
+            </div>
+            <div class="menu-item-price">€9 glass / €36 bottle</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Barbera d'Asti</h4>
+            </div>
+            <div class="menu-item-price">€8 glass / €32 bottle</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Still Water</h4>
+            </div>
+            <div class="menu-item-price">€3</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Sparkling Water</h4>
+            </div>
+            <div class="menu-item-price">€3</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Italian Soft Drinks</h4>
+            </div>
+            <div class="menu-item-price">€4</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Fresh Lemonade</h4>
+            </div>
+            <div class="menu-item-price">€5</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Closing call-to-action (shared design with the About page) -->
+      <section class="cta-band" aria-labelledby="cta-heading">
+        <div class="cta-band-inner">
+          <p class="cta-eyebrow">Bella Italia</p>
+          <h2 class="cta-heading" id="cta-heading">
+            Hungry for Real Italian Food in Dublin?
+          </h2>
+          <p class="cta-text">
+            Explore our menu of authentic Italian favourites, from handmade
+            pasta and classic pizza to delicious desserts and Italian wines.
+            Choose your favourites, book your table, and get ready for a true
+            taste of Italy.
+          </p>
+          <div class="cta-actions">
+            <a
+              href="contact.html"
+              class="btn btn-primary cta-btn"
+              data-booking-link
+            >
+              <span class="cta-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  xmlns="http://www.w3.org/2000/svg"
+                  focusable="false"
+                >
+                  <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+                  <path d="M3.5 9.5h17M8 3v3.5M16 3v3.5" />
+                </svg>
+              </span>
+              Book a Table
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <!-- Brand / logo area -->
+        <div class="footer-section footer-brand">
+          <span class="footer-logo-mark" aria-hidden="true">
+            <svg
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+              focusable="false"
+            >
+              <circle cx="24" cy="24" r="23" fill="#d32f2f" />
+              <circle
+                cx="24"
+                cy="24"
+                r="18.5"
+                fill="none"
+                stroke="#c8a45c"
+                stroke-width="1.4"
+              />
+              <text
+                x="24"
+                y="31.5"
+                text-anchor="middle"
+                font-family="'Playfair Display', Georgia, serif"
+                font-size="19"
+                font-weight="700"
+                fill="#f7f0e6"
+              >
+                BI
+              </text>
+            </svg>
+          </span>
+          <p class="footer-brand-name">Bella Italia</p>
+          <p class="footer-tagline">
+            Authentic Italian Flavours.<br />Warm Italian Hospitality.
+          </p>
+          <a
+            href="contact.html"
+            class="btn btn-primary footer-cta"
+            data-booking-link
+          >
+            <span class="footer-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+                <path d="M3.5 9.5h17M8 3v3.5M16 3v3.5" />
+              </svg>
+            </span>
+            Book a Table
+          </a>
+        </div>
+
+        <!-- Opening hours -->
+        <div class="footer-section">
+          <h3 class="footer-heading">
+            <span class="footer-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7.2V12l3 1.8" />
+              </svg>
+            </span>
+            Opening Hours
+          </h3>
+          <ul class="footer-hours">
+            <li>
+              <span class="footer-hours-day">Monday&ndash;Thursday</span>
+              <span class="footer-hours-time"
+                >12:00&ndash;15:00 & 17:30&ndash;22:30</span
+              >
+            </li>
+            <li>
+              <span class="footer-hours-day">Friday&ndash;Saturday</span>
+              <span class="footer-hours-time">12:00&ndash;23:00</span>
+            </li>
+            <li>
+              <span class="footer-hours-day">Sunday</span>
+              <span class="footer-hours-time">12:00&ndash;21:30</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact details -->
+        <div class="footer-section">
+          <h3 class="footer-heading">Contact Us</h3>
+          <ul class="footer-contact">
+            <li>
+              <span class="footer-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  xmlns="http://www.w3.org/2000/svg"
+                  focusable="false"
+                >
+                  <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" />
+                  <circle cx="12" cy="10" r="2.6" />
+                </svg>
+              </span>
+              <span>12 George Street,<br />Dublin, Ireland</span>
+            </li>
+            <li>
+              <span class="footer-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  xmlns="http://www.w3.org/2000/svg"
+                  focusable="false"
+                >
+                  <path
+                    d="M6.6 3.5h3l1.5 3.6-1.9 1.4a12.8 12.8 0 0 0 5.8 5.8l1.4-1.9 3.6 1.5v3c0 1-.8 1.8-1.8 1.8A16.4 16.4 0 0 1 4.8 5.3c0-1 .8-1.8 1.8-1.8Z"
+                  />
+                </svg>
+              </span>
+              <a href="tel:+35315550123">+353 1 555 0123</a>
+            </li>
+            <li>
+              <span class="footer-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  xmlns="http://www.w3.org/2000/svg"
+                  focusable="false"
+                >
+                  <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
+                  <path d="m4 7 8 5.5L20 7" />
+                </svg>
+              </span>
+              <a href="mailto:hello@bellaitalia-demo.com"
+                >hello@bellaitalia-demo.com</a
+              >
+            </li>
+          </ul>
+          <!-- DEMO PLACEHOLDER: Bella Italia's phone number is fictional.
+                     Replace the placeholder number in the href below with the client's real
+                     WhatsApp number in international format (digits only, no "+" or spaces). -->
+          <a
+            class="whatsapp-btn footer-whatsapp"
+            href="https://wa.me/35315550123"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat with Bella Italia on WhatsApp (demo placeholder link)"
+          >
+            <span class="whatsapp-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                />
+              </svg>
+            </span>
+            <span class="whatsapp-text">WhatsApp Us</span>
+          </a>
+        </div>
+
+        <!-- Navigation + social -->
+        <div class="footer-section">
+          <h3 class="footer-heading">Explore</h3>
+          <nav class="footer-nav" aria-label="Footer navigation">
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+          <h4 class="footer-subheading">Follow Us</h4>
+          <div class="footer-social">
+            <a
+              href="#"
+              class="footer-social-link"
+              aria-label="Bella Italia on Instagram (demo placeholder link, no live profile yet)"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <path
+                  d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2Zm0 1.8c-3.14 0-3.51.01-4.75.07-.91.04-1.4.19-1.73.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.33-.28.82-.32 1.73C3.21 8.49 3.2 8.86 3.2 12s.01 3.51.07 4.75c.04.91.19 1.4.32 1.73.17.43.37.74.69 1.06.32.32.63.52 1.06.69.33.13.82.28 1.73.32 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c.91-.04 1.4-.19 1.73-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.33.28-.82.32-1.73.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.04-.91-.19-1.4-.32-1.73a2.9 2.9 0 0 0-.69-1.06 2.9 2.9 0 0 0-1.06-.69c-.33-.13-.82-.28-1.73-.32C15.51 4.01 15.14 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Zm5.15-2.15a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"
+                />
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="footer-social-link"
+              aria-label="Bella Italia on Facebook (demo placeholder link, no live profile yet)"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <path
+                  d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.9h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="footer-demo-note">
+            Demo links &mdash; no live social profiles.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-legal">
+          &copy; 2026 Bella Italia. All rights reserved.
+        </p>
+        <p class="footer-demo">
+          Bella Italia is a fictional demo restaurant &mdash; all details are
+          examples.
+        </p>
+        <p class="footer-credit">Demo website created by TopLocalWebsites.</p>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

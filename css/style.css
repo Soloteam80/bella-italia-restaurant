@@ -1,0 +1,1931 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Brand & hero design tokens */
+:root {
+  /* Core palette (kept aligned with the existing red/warm identity) */
+  --color-primary: #d32f2f;
+  --color-primary-dark: #b71c1c;
+  --color-primary-deep: #8d1b1b;
+  --color-ink: #2c1810;
+  --color-ink-deep: #150b07;
+  --color-cream: #f7f0e6;
+  --color-gold: #c8a45c;
+
+  /* Hero layer tokens.
+       To use the real restaurant photograph later, replace --hero-image with:
+       url('images/hero-image.jpg')
+       No other structural change is needed. */
+  --hero-image: url("../images/hero-image.webp");
+  --hero-overlay: linear-gradient(
+    180deg,
+    rgba(21, 11, 7, 0.74) 0%,
+    rgba(21, 11, 7, 0.46) 45%,
+    rgba(21, 11, 7, 0.82) 100%
+  );
+  --hero-warm-glow: radial-gradient(
+    120% 90% at 50% 12%,
+    rgba(211, 47, 47, 0.3) 0%,
+    rgba(211, 47, 47, 0) 62%
+  );
+  --hero-text: #ffffff;
+  --hero-muted: rgba(255, 255, 255, 0.86);
+  --hero-max-width: 900px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  color: #2c1810;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Header Styles */
+.header {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo h1 {
+  font-size: 1.8rem;
+  color: #d32f2f;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Simple inline-SVG Bella Italia emblem. Small, elegant and legible at
+   navigation size; it scales cleanly on desktop, tablet and mobile. */
+.logo-mark {
+  display: inline-flex;
+  width: 2.1rem;
+  height: 2.1rem;
+  flex-shrink: 0;
+}
+
+.logo-mark svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Groups the navigation links and the WhatsApp call-to-action so they sit
+   together at the top-right on desktop and stay clear of the mobile menu
+   button on small screens. */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-weight: 500;
+  color: #555;
+  position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #d32f2f;
+}
+
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #d32f2f;
+}
+
+/* WhatsApp call-to-action. The green is used only so the WhatsApp CTA stays
+   immediately recognisable, as allowed by the brief. The number it points to
+   is a demo placeholder and must be replaced with the client's real number. */
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  background-color: #25d366;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.whatsapp-btn:hover,
+.whatsapp-btn:focus-visible {
+  background-color: #1da851;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-btn:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.whatsapp-icon {
+  display: inline-flex;
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+.whatsapp-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(520px, 86vh, 900px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(3.5rem, 8vw, 7rem) 1.5rem;
+  color: var(--hero-text);
+  overflow: hidden;
+  background-color: var(--color-ink-deep);
+}
+
+/* Hero background photograph layer. The photo lives on this dedicated layer
+   (rather than directly on .hero) so the slow Ken Burns zoom/pan can animate
+   the image on its own without ever moving the hero text, buttons or overlay.
+   background-size: cover is preserved so the image stays edge-to-edge with no
+   visible gaps, and the negative z-index keeps it above .hero's fallback
+   background colour while remaining beneath the overlay and the content.
+   The --hero-image token is still the single source of truth, so the
+   per-page hero variants (About/Menu/Gallery/Contact) are unaffected. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--hero-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1);
+  transform-origin: center;
+  pointer-events: none;
+  will-change: transform;
+  animation: hero-kenburns 15s ease-in-out infinite alternate;
+}
+
+/* Dark image-overlay layer. This sits above the background photo (or the
+   neutral gradient placeholder) and below the hero content, so a real
+   restaurant photograph can be dropped in without restructuring anything. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--hero-overlay), var(--hero-warm-glow);
+  pointer-events: none;
+}
+
+/* Subtle, premium Ken Burns motion: a very slow zoom from 1.00 to 1.08 with a
+   gentle drift, looped smoothly and alternately. The translate stays well
+   within the extra 8% of scaled image, so no edges or gaps ever appear. */
+@keyframes hero-kenburns {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.08) translate3d(-1.5%, -1%, 0);
+  }
+}
+
+/* Respect users who prefer reduced motion: hold the hero photo perfectly still. */
+@media (prefers-reduced-motion: reduce) {
+  .hero::after {
+    animation: none;
+    transform: none;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--hero-max-width);
+}
+
+.hero-eyebrow {
+  position: relative;
+  display: inline-block;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  padding-bottom: 0.6rem;
+  font-size: clamp(0.72rem, 0.9vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.hero-eyebrow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 56px;
+  height: 1px;
+  transform: translateX(-50%);
+  background-color: rgba(200, 164, 92, 0.65);
+}
+
+.hero-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  color: var(--hero-text);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+
+.hero-subtitle {
+  max-width: 640px;
+  margin: 0 auto clamp(1.75rem, 3vw, 2.5rem);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--hero-muted);
+}
+
+/* About page hero: reuses the homepage .hero sizing, overlay, background
+   treatment and typography, only swapping in the About photograph through the
+   existing --hero-image token. The shared .hero rules (including the
+   responsive min-height) therefore apply unchanged. */
+.hero-about {
+  --hero-image: url("../images/about-hero.webp");
+}
+
+/* Menu page hero: identical treatment to the homepage/About hero. It reuses
+   the shared .hero sizing, dark overlay, background-size/position and
+   typography, only swapping in the Menu photograph through the existing
+   --hero-image token. The responsive min-height therefore applies unchanged. */
+.hero-menu {
+  --hero-image: url("../images/menu-hero.webp");
+}
+
+/* Gallery page hero: identical treatment to the homepage/About/Menu hero. It
+   reuses the shared .hero sizing, dark overlay, background-size/position and
+   typography, only swapping in the Gallery photograph through the existing
+   --hero-image token. The responsive min-height therefore applies unchanged. */
+.hero-gallery {
+  --hero-image: url("../images/gallery-hero.webp");
+}
+
+/* Contact page hero: identical treatment to the homepage/About/Menu hero. It
+   reuses the shared .hero sizing, dark overlay, background-size/position and
+   typography, only swapping in the Contact photograph through the existing
+   --hero-image token. The responsive min-height therefore applies unchanged. */
+.hero-contact {
+  --hero-image: url("../images/contact-hero.webp");
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  justify-content: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.85rem, 1.4vw, 1.05rem) clamp(1.6rem, 3vw, 2.4rem);
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--hero-text);
+  box-shadow: 0 10px 24px rgba(211, 47, 47, 0.3);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(211, 47, 47, 0.4);
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.7);
+  color: var(--hero-text);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background-color: rgba(255, 255, 255, 0.16);
+  border-color: var(--hero-text);
+  transform: translateY(-2px);
+}
+
+/* Legacy CTA style retained for any other call-to-action usage */
+.cta-button {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Homepage social-proof ratings
+   A compact strip that bridges the dark hero to the lighter sections below.
+   Demo-only content for the fictional Bella Italia: the two blocks are
+   intentionally NOT links and the figures are placeholders. The layout mirrors
+   a common "Google + TripAdvisor" rating arrangement (icon + large score +
+   stars + small platform label).
+   The strip carries a subtle Italian tricolour: muted green, cream and red
+   fading softly across the section (no hard stripes, no flag imagery), with a
+   feathered cream veil keeping the ratings legible. The stars are inline SVG
+   so the half-star is a real half-star. */
+.bi-ratings {
+  position: relative;
+  overflow: hidden;
+  background-color: #f8f4ec;
+  background-image: linear-gradient(
+    90deg,
+    rgba(27, 107, 69, 0.86) 0%,
+    rgba(27, 107, 69, 0.62) 9%,
+    rgba(27, 107, 69, 0.26) 21%,
+    rgba(27, 107, 69, 0) 36%,
+    rgba(181, 42, 50, 0) 64%,
+    rgba(181, 42, 50, 0.26) 79%,
+    rgba(181, 42, 50, 0.62) 91%,
+    rgba(181, 42, 50, 0.86) 100%
+  );
+  border-bottom: 1px solid rgba(200, 164, 92, 0.35);
+  padding: clamp(1.9rem, 4vw, 2.9rem) 1.5rem;
+}
+
+/* Feathered cream veil. Keeps the rating content on a calm, readable ground
+   while the tricolour stays visible towards the edges of the strip. It has no
+   hard edge, so the section still reads as one continuous band. */
+.bi-ratings::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    58% 150% at 50% 46%,
+    rgba(248, 244, 236, 0.96) 0%,
+    rgba(248, 244, 236, 0.8) 52%,
+    rgba(248, 244, 236, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.bi-ratings-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+/* Kept box-free so the two ratings read as one unified strip. */
+.bi-rating-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.5rem clamp(1.25rem, 6vw, 4rem);
+}
+
+/* Thin, semi-transparent divider between Google and TripAdvisor. */
+.bi-rating-card + .bi-rating-card {
+  border-left: 1px solid rgba(44, 24, 16, 0.14);
+}
+
+.bi-rating-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--color-cream);
+  border: 1px solid rgba(200, 164, 92, 0.55);
+  color: var(--color-primary-deep);
+}
+
+.bi-rating-icon svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  display: block;
+}
+
+.bi-rating-info {
+  text-align: left;
+}
+
+.bi-rating-score-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bi-rating-score {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary-deep);
+}
+
+.bi-rating-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.08rem;
+  color: var(--color-gold);
+}
+
+.bi-rating-star {
+  width: 1.15rem;
+  height: 1.15rem;
+  display: inline-block;
+  flex-shrink: 0;
+  fill: var(--color-gold);
+}
+
+/* The empty portion of the half-star, so the "half" reads clearly. */
+.bi-rating-star-track {
+  fill: rgba(200, 164, 92, 0.25);
+}
+
+.bi-rating-star-fill {
+  fill: var(--color-gold);
+}
+
+.bi-rating-source {
+  margin-top: 0.25rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(44, 24, 16, 0.62);
+}
+
+.bi-ratings-demo-note {
+  position: relative;
+  z-index: 1;
+  margin: 1.15rem 0 0;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(44, 24, 16, 0.5);
+}
+
+/* Screen-reader-only helper used for the ratings section heading. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 640px) {
+  .bi-ratings-inner {
+    flex-direction: column;
+  }
+
+  .bi-rating-card {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+    padding: 0.9rem 1rem;
+  }
+
+  /* Divider becomes horizontal when the ratings stack. */
+  .bi-rating-card + .bi-rating-card {
+    border-left: 0;
+    border-top: 1px solid rgba(44, 24, 16, 0.14);
+  }
+
+  /* Broader cream core on small screens so green/red never crowd the text. */
+  .bi-ratings::after {
+    background: radial-gradient(
+      78% 130% at 50% 50%,
+      rgba(248, 244, 236, 0.94) 0%,
+      rgba(248, 244, 236, 0.78) 55%,
+      rgba(248, 244, 236, 0) 100%
+    );
+  }
+}
+
+/* Features Section
+   Three premium cards for the homepage. Each card carries a refined Italian
+   tricolour border (muted green -> cream -> muted red) drawn with the
+   padding-box / border-box background technique so the rounded corners are
+   preserved and the effect stays a quiet detail rather than a flag. Content
+   keeps the existing Bella Italia type system (Playfair Display headings,
+   Poppins body) and lifts gently on hover. */
+.features {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.feature {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.35rem 1.75rem 2.15rem;
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  background:
+    linear-gradient(#fffdfa, #fffdfa) padding-box,
+    linear-gradient(
+        135deg,
+        #1b6b45 0%,
+        rgba(27, 107, 69, 0.55) 22%,
+        #f8f4ec 50%,
+        rgba(181, 42, 50, 0.55) 78%,
+        #b52a32 100%
+      )
+      border-box;
+  box-shadow: 0 8px 20px rgba(44, 24, 16, 0.06);
+  transition:
+    transform 280ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 280ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1.35rem;
+  font-size: 2rem;
+  line-height: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 32%, #fffdfa 0%, #f4ebda 100%);
+  border: 1px solid rgba(200, 164, 92, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    0 4px 10px rgba(44, 24, 16, 0.06);
+}
+
+.feature h3 {
+  margin: 0 0 0.7rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #2c1810;
+}
+
+.feature p {
+  margin: 0;
+  max-width: 34ch;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(44, 24, 16, 0.68);
+}
+
+/* Gentle lift, only on devices with a real pointer. */
+@media (hover: hover) {
+  .feature:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 16px 32px rgba(44, 24, 16, 0.14);
+  }
+}
+
+@media (max-width: 560px) {
+  .features {
+    padding: 0 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .feature {
+    padding: 2rem 1.5rem 1.9rem;
+  }
+}
+
+/* Respect reduced-motion preferences: no lift, no easing. */
+@media (prefers-reduced-motion: reduce) {
+  .feature {
+    transition: none;
+  }
+
+  .feature:hover {
+    transform: none;
+  }
+}
+
+/* About Section */
+.about-preview {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about-content h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.about-content p {
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.learn-more {
+  color: #d32f2f;
+  font-weight: 600;
+  position: relative;
+}
+
+.learn-more::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #d32f2f;
+}
+
+/* "Why Visit Bella Italia?" photo: a slow, premium Ken Burns drift that loops
+   smoothly. The fixed frame clips the zooming photo (so nothing around the
+   section moves) and lifts slightly on hover, all disabled for reduced motion.
+   The frame carries the radius/shadow so the scaled photo never clips them. */
+.about-image {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-image img {
+  border-radius: 10px;
+  animation: about-image-ken-burns 15s ease-in-out infinite alternate;
+  transition: transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.about-image:hover img {
+  animation: none;
+  transform: scale(1.06);
+}
+
+@keyframes about-image-ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-image img {
+    animation: none;
+    transition: none;
+  }
+
+  .about-image:hover img {
+    transform: none;
+  }
+}
+
+/* About preview desktop layout: image in the left column, copy on the right.
+   Scoped to this section only. On tablets/phones the section collapses to a
+   single column (see the 768px breakpoint) and keeps its natural source order
+   so the image and text stack cleanly. */
+@media (min-width: 769px) {
+  .about-preview .about-image {
+    order: 1;
+  }
+
+  .about-preview .about-content {
+    order: 2;
+  }
+}
+
+/* Authentic Italian Experience Section
+   Premium feature grid added to the homepage directly after "Our Story".
+   Eight items flow as 4 / 2 / 1 columns depending on viewport width. The icons
+   reuse the existing inline-SVG stroke system (24x24 viewBox, stroke-width 1.7,
+   fill: none) that the footer already uses, tinted gold/red and set inside a
+   small medallion so the section reads as an elegant restaurant feature list
+   rather than a generic dashboard/card grid. No new fonts, colours or
+   animation systems are introduced. */
+.experience {
+  max-width: 1200px;
+  margin: 4.5rem auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.experience-heading {
+  font-size: clamp(1.8rem, 4vw, 2.35rem);
+  line-height: 1.2;
+  color: var(--color-ink);
+  margin-bottom: 1.5rem;
+}
+
+/* Short gold rule under the centred heading, echoing the hero eyebrow accent. */
+.experience-heading::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 1px;
+  margin: 1.1rem auto 0;
+  background-color: rgba(200, 164, 92, 0.7);
+}
+
+.experience-intro {
+  max-width: 620px;
+  margin: 0 auto 3rem;
+  color: #666;
+  font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+  line-height: 1.7;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.75rem 2rem;
+}
+
+.experience-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+/* Subtle hairline dividers between columns (desktop). They fade at both ends
+   so the grid feels refined instead of boxed-in like cards. */
+.experience-item::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: -1rem;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(200, 164, 92, 0) 0%,
+    rgba(200, 164, 92, 0.45) 50%,
+    rgba(200, 164, 92, 0) 100%
+  );
+}
+
+.experience-item:nth-child(4n + 1)::before {
+  display: none;
+}
+
+/* Icon medallion: consistent size and weight for every feature. */
+.experience-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 1.15rem;
+  border-radius: 50%;
+  color: var(--color-primary);
+  background-color: rgba(200, 164, 92, 0.1);
+  border: 1px solid rgba(200, 164, 92, 0.38);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.experience-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+.experience-item:hover .experience-icon {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-ink-deep);
+}
+
+/* Clear hierarchy: icon -> uppercase category -> short description. */
+.experience-category {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-bottom: 0.55rem;
+}
+
+.experience-detail {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #666;
+  max-width: 26ch;
+}
+
+/* The site's existing gentle reveal effect (see js/script.js) is reused for
+   .experience-item; nothing new is animated and icons never move on their own. */
+@media (prefers-reduced-motion: reduce) {
+  .experience-icon {
+    transition: none;
+  }
+}
+
+/* Tablet: two columns. */
+@media (max-width: 900px) {
+  .experience-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 2rem;
+  }
+
+  .experience-item:nth-child(4n + 1)::before {
+    display: block;
+  }
+
+  .experience-item:nth-child(2n + 1)::before {
+    display: none;
+  }
+}
+
+/* Small mobile: single comfortable column. */
+@media (max-width: 560px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .experience-item::before {
+    display: none;
+  }
+}
+
+/* Footer
+   Rebuilt to mirror the structure and visual hierarchy of the reference
+   footer: a dark, spacious four-column grid (Brand / Opening Hours /
+   Contact + WhatsApp CTA / Links + Social) over a bordered copyright bar.
+   All values reuse the existing Bella Italia identity (burgundy, cream,
+   gold, Playfair Display + Poppins) and the existing button/WhatsApp styles. */
+.footer {
+  background:
+    radial-gradient(
+      120% 140% at 12% 0%,
+      rgba(211, 47, 47, 0.16) 0%,
+      rgba(211, 47, 47, 0) 55%
+    ),
+    linear-gradient(180deg, #1c0f09 0%, #2c1810 100%);
+  color: var(--color-cream);
+  padding: 4.5rem 0 1.75rem;
+  margin-top: 4rem;
+  border-top: 3px solid var(--color-gold);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1.35fr 1.05fr 1.25fr 1fr;
+  gap: 3rem 2.5rem;
+  align-items: start;
+}
+
+.footer-section {
+  min-width: 0;
+}
+
+/* Section headings */
+.footer-section h3,
+.footer-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  margin-bottom: 1.35rem;
+}
+
+/* Brand / logo area */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-logo-mark {
+  display: inline-flex;
+  width: 3.25rem;
+  height: 3.25rem;
+  flex-shrink: 0;
+  margin-bottom: 1.1rem;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
+}
+
+.footer-logo-mark svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.footer-section .footer-brand-name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-cream);
+  margin-bottom: 0.5rem;
+}
+
+.footer-section .footer-tagline {
+  color: rgba(247, 240, 230, 0.72);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  max-width: 30ch;
+  margin-bottom: 1.5rem;
+}
+
+/* Base text + links */
+.footer-section p,
+.footer-section li {
+  color: rgba(247, 240, 230, 0.72);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.footer-section a {
+  color: rgba(247, 240, 230, 0.72);
+  transition: color 0.25s ease;
+}
+
+.footer-section a:hover,
+.footer-section a:focus-visible {
+  color: var(--color-gold);
+}
+
+/* Inline SVG icon system (stroke icons set their own paint inline) */
+.footer-icon {
+  display: inline-flex;
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  color: var(--color-gold);
+}
+
+.footer-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.footer-heading .footer-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+/* Opening hours */
+.footer-hours {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footer-hours li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.footer-hours-day {
+  color: var(--color-cream);
+  font-weight: 500;
+}
+
+.footer-hours-time {
+  color: rgba(247, 240, 230, 0.72);
+}
+
+/* Contact list */
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.footer-contact .footer-icon {
+  margin-top: 0.28rem;
+}
+
+/* Navigation + social */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.85rem;
+}
+
+.footer-subheading {
+  font-family: "Playfair Display", serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  margin-bottom: 0.85rem;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.65rem;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid rgba(200, 164, 92, 0.45);
+  border-radius: 50%;
+  color: var(--color-cream);
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.footer-social-link svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  display: block;
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+  color: var(--color-ink);
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+.footer-section .footer-demo-note {
+  font-size: 0.78rem;
+  color: rgba(247, 240, 230, 0.5);
+  line-height: 1.5;
+  margin-top: 0.35rem;
+}
+
+/* Footer call-to-action buttons (reuse .btn / .whatsapp-btn) */
+.footer-cta {
+  gap: 0.55rem;
+  padding: 0.85rem 1.7rem;
+  font-size: 0.85rem;
+}
+
+.footer-cta .footer-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: currentColor;
+}
+
+.footer-section .footer-whatsapp {
+  margin-top: 1.5rem;
+}
+
+/* Bottom copyright / legal bar */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 3.5rem auto 0;
+  padding: 1.75rem 2rem 0;
+  border-top: 1px solid rgba(200, 164, 92, 0.28);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  text-align: left;
+}
+
+.footer-bottom p {
+  color: rgba(247, 240, 230, 0.68);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.footer-bottom .footer-demo {
+  color: rgba(247, 240, 230, 0.52);
+  font-style: italic;
+}
+
+/* Footer responsive behaviour */
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 2rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .footer-section .footer-tagline {
+    max-width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* Page Headers */
+.page-header {
+  text-align: center;
+  padding: 3rem 0;
+  background-color: #f9f9f9;
+  margin-bottom: 2rem;
+}
+
+.page-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Gallery intro band — reuses the shared .page-header treatment for the
+   centered Playfair heading and Poppins body copy, and adds only a readable
+   measure plus side padding so the paragraph never runs edge-to-edge on
+   small screens. Scoped to the gallery page only. */
+.gallery-intro {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.gallery-intro p {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Menu Section */
+.menu-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.menu-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #d32f2f;
+  border-bottom: 2px solid #d32f2f;
+  padding-bottom: 0.5rem;
+}
+
+.menu-items {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item-info h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.menu-item-info p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.menu-item-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #d32f2f;
+}
+
+/* "Explore Our Menu" CTA that closes the Signature Dishes block.
+   The dish list is left-aligned, so the CTA is pushed to the opposite (right)
+   side to balance the section. Styling reuses the brand burgundy/cream
+   palette and keeps the arrow inside the button. */
+.story-cta {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 2rem;
+}
+
+.btn-menu {
+  gap: 0.6rem;
+  padding: clamp(0.9rem, 1.6vw, 1.1rem) clamp(1.8rem, 3.2vw, 2.5rem);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1rem, 1.15vw, 1.12rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: #f8f4ec;
+  background-color: var(--color-primary-deep);
+  border: 1px solid var(--color-primary-deep);
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(141, 27, 27, 0.22);
+  transition:
+    transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 260ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    background-color 260ms ease,
+    border-color 260ms ease;
+}
+
+.btn-menu span {
+  display: inline-block;
+  transition: transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .btn-menu:hover,
+  .btn-menu:focus-visible {
+    background-color: #7a1616;
+    border-color: #7a1616;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 30px rgba(141, 27, 27, 0.3);
+  }
+
+  .btn-menu:hover span,
+  .btn-menu:focus-visible span {
+    transform: translateX(4px);
+  }
+}
+
+@media (max-width: 560px) {
+  .story-cta {
+    justify-content: center;
+    margin-top: 1.6rem;
+  }
+}
+
+/* Respect reduced-motion preferences for the CTA lift and arrow slide. */
+@media (prefers-reduced-motion: reduce) {
+  .btn-menu,
+  .btn-menu span {
+    transition: none;
+  }
+
+  .btn-menu:hover,
+  .btn-menu:focus-visible {
+    transform: none;
+  }
+}
+
+/* About Content Section */
+.about-content-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about-text h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #d32f2f;
+}
+
+.about-text p {
+  margin-bottom: 1.5rem;
+  color: #666;
+  line-height: 1.8;
+}
+
+.about-image-large img {
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Values Section */
+.values-section {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.values-section h3 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #d32f2f;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.value-item {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.value-item:hover {
+  transform: translateY(-5px);
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.value-item h4 {
+  margin-bottom: 0.5rem;
+  color: #d32f2f;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 10px;
+  /* Clips the zooming image so it stays inside the existing frame */
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+/* Subtle image-only zoom on hover; the gallery card itself is not scaled */
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+/* Respect users who prefer reduced motion: disable the zoom and transition */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-item img {
+    transition: none;
+  }
+
+  .gallery-item:hover img {
+    transform: none;
+  }
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 1.5rem;
+  color: white;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  transform: translateY(0);
+}
+
+.gallery-overlay h3 {
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.gallery-overlay p {
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+/* Contact Section */
+.contact-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.contact-info {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.contact-info h3 {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.contact-info p {
+  margin-bottom: 1rem;
+  color: #666;
+  line-height: 1.8;
+}
+
+.contact-form {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.contact-form h3 {
+  color: #d32f2f;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #d32f2f;
+}
+
+.submit-button {
+  background-color: #d32f2f;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.submit-button:hover {
+  background-color: #b71c1c;
+}
+
+/* "Find Us" Google Maps section (contact page). Responsive and styled to
+   match the existing rounded cards (10px radius, soft shadow). */
+.map-section {
+  max-width: 1200px;
+  margin: 2rem auto 4rem;
+  padding: 0 2rem;
+}
+
+.map-section h3 {
+  color: #d32f2f;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.map-note {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  max-width: 760px;
+}
+
+.map-embed {
+  height: 450px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e6e6e6;
+  background-color: #f9f9f9;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .hero {
+    min-height: 78vh;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .about-preview,
+  .about-content-section,
+  .contact-section {
+    grid-template-columns: 1fr;
+  }
+
+  .features,
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet / mobile map height */
+@media (max-width: 768px) {
+  .map-embed {
+    height: 320px;
+  }
+
+  .nav-right {
+    gap: 0.9rem;
+  }
+}
+
+/* Compact header on small phones so the logo, WhatsApp CTA and menu button
+   never crowd or overlap each other. */
+@media (max-width: 480px) {
+  .logo {
+    gap: 0.45rem;
+  }
+
+  .logo h1 {
+    font-size: 1.4rem;
+  }
+
+  .logo-mark {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .whatsapp-btn {
+    padding: 0.55rem;
+  }
+
+  .whatsapp-text {
+    display: none;
+  }
+}
+
+/* Closing call-to-action band
+   A single, shared CTA design used at the very end of the About and Menu
+   pages, immediately before the footer. It deliberately reuses the existing
+   Bella Italia visual language: Playfair Display headings, Poppins body copy,
+   the cream/gold/burgundy palette and the shared .btn button system. Only the
+   rules below are new, and they are scoped entirely to this component. A soft
+   Italian tricolour hairline along the top edge echoes the treatment already
+   used by the ratings strip and the feature cards, adding a refined Italian
+   accent without any new imagery, fonts or libraries. */
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  margin-top: 4.5rem;
+  padding: clamp(3rem, 6vw, 4.75rem) 1.5rem;
+  text-align: center;
+  background-color: #f8f4ec;
+  background-image: radial-gradient(
+    120% 130% at 50% 0%,
+    rgba(211, 47, 47, 0.06) 0%,
+    rgba(211, 47, 47, 0) 60%
+  );
+  border-top: 1px solid rgba(200, 164, 92, 0.4);
+}
+
+/* Subtle Italian tricolour hairline: muted green -> cream -> muted red.
+   Fades to transparent in the centre so it never reads as a hard flag stripe. */
+.cta-band::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    rgba(27, 107, 69, 0.75) 0%,
+    rgba(27, 107, 69, 0.25) 18%,
+    rgba(248, 244, 236, 0) 38%,
+    rgba(248, 244, 236, 0) 62%,
+    rgba(181, 42, 50, 0.25) 82%,
+    rgba(181, 42, 50, 0.75) 100%
+  );
+  pointer-events: none;
+}
+
+.cta-band-inner {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* Small uppercase gold-ruled eyebrow, matching the hero accent treatment. */
+.cta-eyebrow {
+  display: inline-block;
+  position: relative;
+  margin-bottom: clamp(1rem, 2vw, 1.4rem);
+  padding-bottom: 0.6rem;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(0.72rem, 0.9vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-primary-deep);
+}
+
+.cta-eyebrow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 56px;
+  height: 1px;
+  transform: translateX(-50%);
+  background-color: rgba(200, 164, 92, 0.7);
+}
+
+.cta-heading {
+  margin-bottom: clamp(1rem, 2vw, 1.4rem);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.9rem, 4.4vw, 2.9rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-ink);
+}
+
+/* Comfortable reading measure for the supporting paragraph. */
+.cta-text {
+  max-width: 60ch;
+  margin: 0 auto clamp(1.9rem, 3.5vw, 2.6rem);
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(0.98rem, 1.4vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(44, 24, 16, 0.7);
+}
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.75rem, 1.5vw, 1.1rem);
+}
+
+.cta-btn {
+  gap: 0.55rem;
+}
+
+.cta-icon {
+  display: inline-flex;
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+}
+
+.cta-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Stack the buttons and let them fill the width on smaller screens. */
+@media (max-width: 640px) {
+  .cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-actions .btn {
+    width: 100%;
+  }
+}
+
+/* Respect reduced-motion preferences for the CTA button lift. */
+@media (prefers-reduced-motion: reduce) {
+  .cta-actions .btn {
+    transition: none;
+  }
+
+  .cta-actions .btn:hover,
+  .cta-actions .btn:focus-visible {
+    transform: none;
+  }
+}
